@@ -1,0 +1,42 @@
+Requisitos funcionais (simples)
+1) Módulo Times
+
+RF1: Cadastrar time com nome obrigatório.
+
+RF2: Listar times com paginação e filtro por nome.
+
+RF3: Editar dados de um time.
+
+RF4: Excluir time (bloquear se houver dependências, ou exibir aviso claro).
+
+2) Módulo Jogadores
+
+RF5: Cadastrar jogador com nome, posição (de lista pré-definida) e time (obrigatório).
+
+RF6: Validar número da camisa como inteiro entre 1 e 99.
+
+RF7: Listar jogadores com paginação e filtros por nome, posição e time.
+
+RF8: Editar dados do jogador (mantendo validações).
+
+RF9: Excluir jogador.
+
+3) Módulo Partidas
+
+RF10: Cadastrar partida com time mandante, time visitante, data/hora e placar (inteiros ≥ 0).
+
+RF11: Impedir cadastramento quando mandante = visitante.
+
+RF12: Listar partidas com paginação e filtros por time, período (data inicial/final) e resultado (opcional).
+
+RF13: Editar dados da partida (mantendo validações).
+
+RF14: Excluir partida.
+
+4) Regras de listagem, filtros e UX mínima
+
+RF15: Todas as listagens devem ter paginação (p.ex., 10–20 itens/página).
+
+RF16: Exibir mensagens de validação e confirmação de exclusão.
+
+RF17: Em erros de conexão/SQL, mostrar mensagem amigável e instrução básica de correção.
