@@ -1,79 +1,49 @@
 <?php
 
-include '../partials/header.php'; 
+    include '../db.php';
 
-$nome = $cidade = "";
-$nome_err = $cidade_err = "";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $name = trim($_POST['nome']);
+            $cidade = trim($_POST['cidade']);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input_nome = trim($_POST["nome"]);
-    if (empty($input_nome)) {
-        $nome_err = "Por favor, insira um nome para o time.";
-    } else {
-        $nome = $input_nome;
-    }
+            $sql = "INSERT INTO times (nome, cidade) VALUES ('$name', '$cidade')";
 
-    $input_cidade = trim($_POST["cidade"]);
-    if (empty($input_cidade)) {
-        $cidade_err = "Por favor, insira uma cidade para o time.";
-    } else {
-        $cidade = $input_cidade;
-    }
 
-    if (empty($nome_err) && empty($cidade_err)) {
-        $sql = "INSERT INTO times (nome, cidade) VALUES (?, ?)";
-
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ss", $param_nome, $param_cidade);
-
-            $param_nome = $nome;
-            $param_cidade = $cidade;
-
-            if ($stmt->execute()) {
-                header("location: read.php");
-                exit();
-            } else {
-                echo "Oops! Algo deu errado. Por favor, tente novamente mais tarde.";
-            }
-            $stmt->close();
+        if ($conn->query($sql) === true) {
+                echo "Registro criado com sucesso!
+                <a href='../index.php'>Ver registros.</a>";
+        } else {
+            echo "Erro: " . $conn->error;
         }
+
+        $conn->close();
     }
-    $conn->close();
-}
+
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Adicionar Time</title>
-    <link rel="stylesheet" href="../../styles/style.css">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar Time</title>
+    <link rel="stylesheet" href="../styles/style.css">
+  </head>
 
-<body>
+    <body>
+        <div class="container">
+        <h1>Criar Time</h1>
+        <form action="" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-    <div class="container">
-        <h2>Adicionar Novo Time</h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Nome</label>
-                <input type="text" name="nome" class="form-control <?php echo (!empty($nome_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
-                <span class="invalid-feedback"><?php echo $nome_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Cidade</label>
-                <input type="text" name="cidade" class="form-control <?php echo (!empty($cidade_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $cidade; ?>">
-                <span class="invalid-feedback"><?php echo $cidade_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Adicionar">
-                <a href="read.php" class="btn btn-secondary">Cancelar</a>
-            </div>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        
+            <input type="submit" value="Criar">
+            <input type="button" value="Cancelar" onclick="window.location.href='read.php'">
         </form>
-    </div>
+        </div>
 
-    <?php include '../partials/footer.php'; ?>
-</body>
-
-</html>
+    </body>
