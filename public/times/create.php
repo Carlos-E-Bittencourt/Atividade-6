@@ -1,5 +1,6 @@
 <?php
-include '../../db.php';
+
+include '../partials/header.php'; 
 
 $nome = $cidade = "";
 $nome_err = $cidade_err = "";
@@ -51,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include '../../header.php'; ?>
 
     <div class="container">
         <h2>Adicionar Novo Time</h2>
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 
-    <?php include '../../footer.php'; ?>
+    <?php include '../partials/footer.php'; ?>
 </body>
 
 </html>
