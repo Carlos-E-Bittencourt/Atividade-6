@@ -8,3 +8,44 @@ body {
     width: 100%;
     margin: 0;
 }
+
+.dashboard{
+    height: 100vh;
+}
+
+.main{
+    height: 100vh;
+}
+
+.footer {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 24px;
+    padding: 16px 0;
+    color: var(--mut)
+}
+
+.menuButton{
+    border-radius: 10%;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li{
+    float: none; 
+    width: 100%;
+}
+
+li a{
+  position: relative; 
+  z-index: 2;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;  
+  -moz-box-sizing: border-box;  
+  -webkit-box-sizing: border-box; 
+}
