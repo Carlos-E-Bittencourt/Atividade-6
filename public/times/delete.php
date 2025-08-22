@@ -1,5 +1,5 @@
 <?php
-require_once '../../db.php';
+include '../../db.php';
 
 $id = $_GET['id'] ?? null;
 

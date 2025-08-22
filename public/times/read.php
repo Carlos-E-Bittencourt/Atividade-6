@@ -1,5 +1,5 @@
 <?php
-require_once '../../db.php';
+include '../../db.php';
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $page = isset($_GET['page']) ? $_GET['page'] : 1;

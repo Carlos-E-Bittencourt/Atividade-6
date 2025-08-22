@@ -1,5 +1,5 @@
 <?php
-require_once '../../db.php';
+include '../../db.php';
 
 $nome = $cidade = "";
 $nome_err = $cidade_err = "";
